@@ -1,0 +1,44 @@
+
+
+.main{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;
+}
+
+body{
+    background: #bdc3c7;  /* fallback for old browsers */
+}
+
+.registerform{
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    /* height: 600px; */
+}
+
+.formbody{
+    text-align: left;
+    padding: 20px 10px;
+}
+
+.formbody > *{
+    padding: 5px;
+}
+
+.formlabel{
+    width: 40%;
+}
+
+.form_input{
+    width: 60%;
+}
+
+.footer{
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 10px;
+}

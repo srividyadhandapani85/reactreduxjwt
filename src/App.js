@@ -3,12 +3,14 @@ import Home from "./auth/Home";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Dashboard from "./auth/Dashboard";
-import { useSelector } from "react-redux";
+import EmployeeList from "./employee/EmployeeList";
+
+//import { useSelector } from "react-redux";
 
 function App()
 {
 
-  const user = useSelector((state) => state.auth);
+  //const user = useSelector((state) => state.auth);
   return(
     <BrowserRouter>
       <Routes>
@@ -16,7 +18,7 @@ function App()
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
-
+        <Route path="/employees" element={<EmployeeList/>}/>
       </Routes>
     </BrowserRouter>
   );

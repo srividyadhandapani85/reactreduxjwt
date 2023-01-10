@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./redux/authSlice";
+import authReducer from "./redux/authSlice";
+import employeeReducer from "./redux/employeeSlice";
 
 const store = configureStore({
     reducer:{
-        auth:authSlice,
+        auth:authReducer,
+        emp:employeeReducer,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

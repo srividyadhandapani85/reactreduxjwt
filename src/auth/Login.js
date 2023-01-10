@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { logout, login } from '../redux/authSlice';
+import { login } from '../redux/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { Navigate } from 'react-router';
@@ -16,10 +16,12 @@ function Login() {
     const { isLoggedIn } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
+    const payload ={
+      email,password
+  }
     const loginHandle = () => {
         console.log("before dispatch",email,password);
-        dispatch(login({ email, password }))
-        .unwrap()
+        dispatch(login(payload))
         .then(() => {
           navigate("/dashboard");
        //   window.location.reload();
@@ -29,9 +31,6 @@ function Login() {
         })
     }
 
-    const logoutHandle = () => {
-        dispatch(logout())
-    }
 
    if (isLoggedIn) {
         return <Navigate to="/dashboard" />;
@@ -39,14 +38,21 @@ function Login() {
 
   return (
     <div>
-         <div className="d-flex flex-column align-items-center">
+        <div className="registerform">
             <h1>Login</h1>
-            <label>Email</label>
-            <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <button onClick={() => loginHandle()}>Login</button>
-            <button onClick={() => logoutHandle()}>Logout</button>
+            <div className="formbody">
+              <div className="email">
+                <label>Email</label>
+                <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+              </div>
+              <div className="password">
+                <label>Password</label>
+                <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+              </div>
+              <div className="footer">
+                <button onClick={() => loginHandle()}>Login</button>
+              </div>
+            </div>
         </div>  
     </div>
   )

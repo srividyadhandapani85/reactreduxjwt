@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { register } from '../redux/authSlice';
+import './index.css';
 
 function Register() {
 
@@ -13,11 +14,13 @@ function Register() {
     const dispatch = useDispatch()
     const registerHandle = () => {
         console.log("before register dispatch");
-
+        const payload ={
+            email,password
+        }
         setSuccessful(false);
 
-        dispatch(register({email,password}))
-        .unwrap()
+        dispatch(register(payload))
+        
         .then(() => {
             setSuccessful(true)
         })
@@ -29,17 +32,27 @@ function Register() {
 
   return (
     <div>
-        <div className="d-flex flex-column align-items-center">
+        <div className="registerform">
             <h1>Register</h1>
-            <label>Name</label>
-            <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
-            <label>Email</label>
-            <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <button onClick={() => registerHandle()}>Register</button>
+            <div className="formbody">
+                <div className="name">
+                    <label className="formlabel">Name</label>
+                    <input className="forminput" type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
+                </div>
+                <div className="email">
+                    <label className="formlabel">Email</label>
+                    <input className="forminput" type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                </div>
+                <div className="password">
+                    <label className="formlabel">Password</label>
+                    <input className="forminput" type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </div>
+                <div className="footer">
+                    <button onClick={() => registerHandle()}>Register</button>
+                </div>
+            </div>
 
-            {successful && alert("Regiteration success")}
+           
         </div>  
     </div>
   )
